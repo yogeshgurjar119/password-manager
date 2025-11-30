@@ -1,0 +1,46 @@
+{
+    "manifest_version": 3,
+    "name": "Yogesh Password Manager",
+    "version": "1.0.0",
+    "description": "A secure password manager with master password protection that stores and autofills your credentials",
+    "permissions": [
+        "storage",
+        "activeTab",
+        "scripting",
+        "tabs"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_popup": "src/popup/index.html",
+        "default_icon": {
+            "16": "src/icons/icon16.png",
+            "48": "src/icons/icon48.png",
+            "128": "src/icons/icon128.png"
+        }
+    },
+    "background": {
+        "service_worker": "src/background/background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "src/content/content.js"
+            ],
+            "css": [
+                "src/content/style.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "options_page": "src/options/index.html",
+    "icons": {
+        "16": "src/icons/icon16.png",
+        "48": "src/icons/icon48.png",
+        "128": "src/icons/icon128.png"
+    }
+}
